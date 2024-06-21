@@ -19,7 +19,6 @@ if config.config_file_name is not None:
 
 env = Env()
 env.read_env(".env")
-print(env)
 url = URL.create(
     drivername="postgresql+psycopg2",  # driver name = postgresql + the library we are using (psycopg2)
     username=env.str("POSTGRES_USER"),
@@ -37,9 +36,9 @@ config.set_main_option('sqlalchemy.url', url)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-import lesson3
+import lesson4
 
-target_metadata = lesson3.Base.metadata
+target_metadata = lesson4.Base.metadata
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
@@ -87,7 +86,6 @@ def run_migrations_online() -> None:
         context.configure(
             connection=connection, target_metadata=target_metadata
         )
-
         with context.begin_transaction():
             context.run_migrations()
 
